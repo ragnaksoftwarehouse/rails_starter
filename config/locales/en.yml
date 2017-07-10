@@ -1,0 +1,21 @@
+en:
+    menu:
+        map: 'Map'
+        search: 'Search'
+        notifications: 'Notifications'
+        account: 'Account'
+        settings: 'Settings'
+        help: 'Help'
+        nav: 'Navigation'
+        vehicles: 'Vehicles'
+        drivers: 'Drivers'
+        routes: 'Routes'
+        fuel_usage: 'Fuel Usage'
+        costs_and_income: 'Costs and Income'
+        reports: 'Reports'
+    errors:
+        credentails: "Login/Hasło niepoprawne"
+    messages:
+        profile_updated: "Profile Updated"
+        password_changed: "Password changed"
+

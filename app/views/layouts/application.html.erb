@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= Rails.application.config.app_name %></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript">
+			<% unless params[:companyslug].blank? %>
+			var URLS = {};
+			<% end %>
+		</script>
+		<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
+
+	<body id="<%= "page-" + params[:controller].gsub("/", "-") %>" class="top-navigation <%= "page-" + params[:controller].gsub("/", "-") + "-" + params[:action] %>">
+		<div id="wrapper">
+            <div id="page-wrapper" class="gray-bg">
+                <div class="row border-bottom white-bg">
+                    <nav class="navbar navbar-static-top" role="navigation">
+                        <div class="navbar-header">
+                            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                                <i class="fa fa-reorder"></i>
+                            </button>
+                            <a href="#" class="navbar-brand"><%= @company_session[:name] %></a>
+                        </div>
+                        <div class="navbar-collapse collapse" id="navbar">
+                            <ul class="nav navbar-nav">
+                                <%= render './layouts/menu_' + @session[:user].user_type %>
+                            </ul>
+                            <ul class="nav navbar-top-links navbar-right">
+                                <li>
+                                    <a href="<%= auth_signout_path %>">
+                                        <i class="fa fa-sign-out"></i> Log out
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="wrapper wrapper-content">
+                    <div class="container">
+                        <%= yield %>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</body>
+    <% if !flash[:notice].nil? && flash[:notice] != '' %>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 2000
+                };
+                toastr.success('<%= flash[:notice] %>');
+            }, 500);
+        });
+    </script>
+    <% end %>
+</html>

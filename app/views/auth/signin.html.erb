@@ -1,0 +1,15 @@
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <h3>Welcome to IN+</h3>
+        <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.</p>
+        <p>Login in. To see it in action.</p>
+        <% if @error == true %>
+        <div class="alert alert-danger alert-dismissable">
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            Invalid email or password
+        </div>
+        <% end %>
+        <%= render 'sign_in_form' %>
+        <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p>
+    </div>
+</div>

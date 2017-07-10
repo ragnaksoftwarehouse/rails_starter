@@ -1,0 +1,38 @@
+#page-dashboard #page-wrapper {
+	padding-left: 0px;
+}
+.map-cont {
+	display: block;
+	height: 100%;
+}
+.map-vehs {
+	height: 100%;
+	width: 250px;
+	background: #fff;
+	float: left;
+}
+.map-vehs .veh {
+	border-bottom: 1px solid #e7eaec;
+	display: block;
+	padding-left: 10px;
+	overflow: hidden;
+}
+.map-vehs .veh h4 {
+	margin: 5px 0px;
+}
+.map-vehs .veh p {
+	margin-bottom: 5px;
+}
+#dash-gm {
+	float: left;
+	width: calc(100% - 250px);
+	height: 300px;
+	position: initial;
+}
+.top-navigation.page-dashboard-map .wrapper.wrapper-content {
+	padding: 0px;
+}
+.top-navigation.page-dashboard-map .container {
+	width: 100%;
+	padding: 0px;
+}

@@ -1,0 +1,21 @@
+<% if @state.is_errored? %>
+<div class="alert alert-danger alert-dismissable">
+	<%= @state.error_msg %>
+</div>
+<% end %>
+
+<form method="post" class="form-horizontal profile-form">
+	<div class="form-group">
+		<input type="text" name="user[firstname]" class="form-control" placeholder="Firstname" required="">
+	</div>
+	<div class="form-group">
+		<input type="text" name="user[surname]" class="form-control" placeholder="Surname" required="">
+	</div>
+	<div class="form-group">
+		<input type="email" name="user[email]" class="form-control" placeholder="Username" required="">
+	</div>
+	<div class="form-group">
+		<input type="password" name="user[password]" class="form-control" placeholder="Password" required="">
+	</div>
+    <button type="submit" class="btn btn-primary block full-width m-b">Sign Up</button>
+</form>

@@ -1,0 +1,18 @@
+pl:
+    activerecord:
+        errors:
+            messages:
+                record_invalid: "Nieprawidłowy rekord"
+                blank: ":To pole nie może być puste"
+            models:
+                vehicle:
+                    attributes:
+                        name:
+                            blank: 'blank'
+                        capacity_gps:
+                            blank: 'blank'
+    errors:
+        credentails: "Login/Password is incorrect"
+    messages:
+        profile_updated: "Profile zaktualizowany"
+        password_changed: "Hasło zostało zmienione"

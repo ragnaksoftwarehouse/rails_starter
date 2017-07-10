@@ -1,0 +1,44 @@
+<div class="row wrapper border-bottom white-bg page-heading single-line">
+    <div class="col-lg-8">
+        <h2>Companies</h2>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <a href="<%= admin_companies_create_path %>" class="btn btn-primary"><i class="fa fa-plus"></i> Create </a>
+        </div>
+    </div>
+</div>
+
+<div class="row make-space">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>List</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Trackers Nr </th>
+                            <th width="100">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% @companies.each {|c| %>
+                        <tr>
+                            <td><%= c.name %></td>
+                            <td></td>
+                            <td><a href="<%= admin_companies_details_path(:id => c.id) %>"><i class="fa fa-check text-navy"></i></a></td>
+                        </tr>
+                        <% } %>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

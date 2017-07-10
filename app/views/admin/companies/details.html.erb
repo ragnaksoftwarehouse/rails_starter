@@ -1,0 +1,84 @@
+<div class="row wrapper border-bottom white-bg page-heading single-line">
+    <div class="col-lg-8">
+        <h2>Company: <span><%= @company.name %></span></h2>
+    </div>
+</div>
+
+<div class="row make-space">
+    <div class="col-lg-12">
+        <div class="tabs-container">
+            <ul class="nav nav-tabs">
+                <li class="<%= (@state.info[:kind] == '' || @state.info[:kind] == 'company') ? 'active' : '' %>"><a data-toggle="tab" href="#tab-1">Data</a></li>
+                <li class="<%= (@state.info[:kind] == 'user') ? 'active' : '' %>"><a data-toggle="tab" href="#tab-2">Users</a></li>
+                <li class="<%= (@state.info[:kind] == 'tracker') ? 'active' : '' %>"><a data-toggle="tab" href="#tab-3">Trackers</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane <%= (@state.info[:kind] == '' || @state.info[:kind] == 'company') ? 'active' : '' %>">
+                    <div class="panel-body">
+                        <form method="post" class="form-horizontal company-form">
+                            <%= render 'form' %>
+                            <input type="hidden" name="form_kind" value="company" />
+                        </form>
+                    </div>
+                </div>
+                <div id="tab-2" class="tab-pane <%= (@state.info[:kind] == 'user') ? 'active' : '' %>">
+                    <div class="panel-body">
+                        <form method="post" class="form-horizontal user-form">
+                            <%= render '/shared/user' %>
+                            <input type="hidden" name="form_kind" value="user" />
+                        </form>
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Email </th>
+										<th width="100">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+								<% @company.users.each {|o| %>
+								<tr>
+									<td><%= o.name %></td>
+									<td><%= o.email %></td>
+									<td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+								</tr>
+								<% } %>
+								</tbody>
+							</table>
+						</div>
+                    </div>
+                </div>
+                <div id="tab-3" class="tab-pane <%= (@state.info[:kind] == 'tracker') ? 'active' : '' %>">
+                    <div class="panel-body">
+						<form method="post" class="form-horizontal tracker-form">
+							<%= render '/shared/tracker' %>
+							<input type="hidden" name="form_kind" value="tracker" />
+							<input type="hidden" name="tracker[idle"] value="1" />
+						</form>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email </th>
+                                        <th width="100">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% @company.trackers.each {|o| %>
+                                <tr>
+                                    <td><%= o.name %></td>
+                                    <td><%= o.imei %></td>
+                                    <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                </tr>
+                                <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

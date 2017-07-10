@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>GPSH - Admin</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script type="text/javascript">
+			<% unless params[:companyslug].blank? %>
+			var URLS = {"map": "<%= vehicles_map_data_path %>"};
+			<% end %>
+		</script>
+		<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPltHYxvqSyqvKgaMQitUlsUQUH_igSTs" async defer></script>
+	</head>
+
+	<body id="<%= "page-" + params[:controller].gsub("/", "-") %>" class="<%= "page-" + params[:controller].gsub("/", "-") + "-" + params[:action] %>">
+		<div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="/img/profile_small.jpg" />
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><%= @session[:user].firstname + " " + @session[:user].surname %></strong></span></span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="<%= profile_index_path(:companyslug => 'admin') %>">Profile</a></li>                                
+                                <li><a href="<%= auth_signout_path %>">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                    
+                    <%= render './layouts/menu_' + @session[:user].role %>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <a href="<%= auth_signout_path %>">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+		
+		<%= yield %>
+
+        </div>
+    </div>
+	</body>
+</html>
